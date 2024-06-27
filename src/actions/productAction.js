@@ -7,7 +7,7 @@ export const listProducts = () => async(dispatch) => {
     });
 
     try {
-        const { data } = await Axios.get('https://e-commerce-backend-22.onrender.com/api/product');
+        const { data } = await Axios.get('/api/product');
         dispatch({
             type: PRODUCT_LIST_SUCCESS,
             payload: data
@@ -27,7 +27,7 @@ export const productDetails = (id) => async(dispatch) => {
     })
 
     try {
-        const { data } = await Axios.get(`https://e-commerce-backend-22.onrender.com/api/product/${id}`)
+        const { data } = await Axios.get(`/api/product/${id}`)
         dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data })
     } catch (error) {
         dispatch({

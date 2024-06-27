@@ -7,7 +7,7 @@ export const orderCreateAction = (order) => async(dispatch, getState) => {
     try {
 
         const { userSignin: { userInfo } } = getState()
-        const { data } = await Axios.post('https://e-commerce-backend-22.onrender.com/api/orders', order, {
+        const { data } = await Axios.post('/api/orders', order, {
             headers: {
                 Authorization: `Bearer ${userInfo.token}`,
             },
@@ -28,7 +28,7 @@ export const detailsOrder = (orderId) => async(dispatch, getState) => {
         userSignin: { userInfo },
     } = getState();
     try {
-        const { data } = await Axios.get(`https://e-commerce-backend-22.onrender.com/api/orders/${orderId}`, {
+        const { data } = await Axios.get(`/api/orders/${orderId}`, {
             headers: { Authorization: `Bearer ${userInfo.token}` },
         });
         dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data });
@@ -43,7 +43,7 @@ export const payOrder = (order, paymentResult) => async(dispatch, getState) => {
         userSignin: { userInfo },
     } = getState();
     try {
-        const { data } = await Axios.put(`https://e-commerce-backend-22.onrender.com/api/orders/${order._id}/pay`, {
+        const { data } = await Axios.put(`/api/orders/${order._id}/pay`, {
             headers: { Authorization: `Bearer ${userInfo.token}` },
         });
         dispatch({ type: ORDER_PAY_SUCCESS, payload: data });
