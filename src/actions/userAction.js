@@ -7,7 +7,7 @@ export const userAction = (email, password) => async(dispatch) => {
 
     try {
 
-        const user = await Axios.post('api/users/signin', { email, password })
+        const user = await Axios.post('/api/users/signin', { email, password })
         dispatch({ type: USER_SIGNIN_SUCCESS, payload: user.data })
         localStorage.setItem("userInfo", JSON.stringify(user.data))
 
