@@ -7,7 +7,7 @@ export const orderCreateAction = (order) => async(dispatch, getState) => {
     try {
 
         const { userSignin: { userInfo } } = getState()
-        const { data } = await Axios.post('`https://e-commerce-backend-22.onrender.com/api/orders', order, {
+        const { data } = await Axios.post('http://localhost:3000/api/orders', order, {
             headers: {
                 Authorization: `Bearer ${userInfo.token}`,
             },
